@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFM Department | K.P.B. Hinduja College</title>
+    <link rel="icon" type="image/png" href="assets/BFM_Logo.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            300: '#FDE047',
+                            400: '#FACC15',
+                            500: '#D4AF37', /* Metallic Gold */
+                            600: '#B49324',
+                            700: '#91761A',
+                        },
+                        dark: {
+                            950: '#050505',
+                            900: '#0a0a0a',
+                            800: '#171717',
+                            700: '#262626',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'scroll': 'scroll 30s linear infinite',
+                        'scroll-reverse': 'scroll-reverse 30s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for specific animations and utilities */
+        body {
+            background-color: #0a0a0a;
+            color: #f5f5f5;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #0a0a0a 70%);
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(to right, #D4AF37, #FDE047, #D4AF37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .gold-glow {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .gold-glow:hover {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Scroll Reveal Utility Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Gallery Looping Grid Styles */
+        .gallery-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .gallery-container::before,
+        .gallery-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .gallery-container::before {
+            left: 0;
+            background: linear-gradient(to right, #0a0a0a, transparent);
+        }
+
+        .gallery-container::after {
+            right: 0;
+            background: linear-gradient(to left, #0a0a0a, transparent);
+        }
+
+        .gallery-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+        }
+
+        .gallery-item {
+            width: 280px;
+            height: 200px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            flex-shrink: 0;
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: border-color 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            z-index: 20;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1) rotate(-1deg);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(5,5,5,0.95), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.25rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Hide scrollbar for slider but keep functionality */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Map Dark Theme Filter */
+        .map-dark-theme {
+            filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(85%);
+        }
+
+        /* General scrollbar for page */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FACC15;
+        }
+        
+        /* Table specific overrides */
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-gold-500 selection:text-dark-900 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-dark-900/70 backdrop-blur-xl border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-4 group cursor-pointer">
+                    <div class="w-11 h-11 rounded-full bg-gold-500 flex items-center justify-center border-2 border-gold-300 shadow-[0_0_15px_rgba(212,175,55,0.4)] group-hover:scale-105 transition-transform duration-300 overflow-hidden p-1">
+                        <img src="https://www.hindujacollege.edu.in/assets/newimages/logo/logo.webp" alt="logo" class="w-full h-full object-contain">
+                    </div>
+                    <div class="sm:block">
+                        <h1 class="text-white font-serif font-bold text-xl tracking-wide group-hover:text-gold-400 transition-colors">K.P.B. Hinduja College</h1>
+                        <p class="text-gold-500 text-xs tracking-widest uppercase font-semibold">B.F.M Department</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center space-x-6">
+                    <a href="#about" class="text-gray-300 hover:text-gold-500 transition-colors text-sm font-medium tracking-wider uppercase relative group">
+                        About
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#syllabus" class="text-gray-300 hover:text-gold-500 transition-colors text-sm font-medium tracking-wider uppercase relative group">
+                        Syllabus
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#faculty" class="text-gray-300 hover:text-gold-500 transition-colors text-sm font-medium tracking-wider uppercase relative group">
+                        Faculty
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#events" class="text-gray-300 hover:text-gold-500 transition-colors text-sm font-medium tracking-wider uppercase relative group">
+                        Events
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#gallery" class="text-gray-300 hover:text-gold-500 transition-colors text-sm font-medium tracking-wider uppercase relative group">
+                        Gallery
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#faq" class="text-gray-300 hover:text-gold-500 transition-colors text-sm font-medium tracking-wider uppercase relative group">
+                        FAQ
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 transition-all group-hover:w-full"></span>
+                    </a>
+                    
+                    <div class="flex items-center gap-3 pl-4 border-l border-white/20">
+                        <a href="#achievements" class="px-4 py-2.5 rounded-full bg-gold-500/10 text-gold-500 border border-gold-500/30 hover:bg-gold-500 hover:text-dark-900 transition-all duration-300 text-xs font-bold tracking-wider uppercase shadow-[0_0_10px_rgba(212,175,55,0.1)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] whitespace-nowrap">Wall of Fame</a>
+                        <a href="#" class="px-4 py-2.5 rounded-full bg-gold-500 text-dark-900 transition-all duration-300 text-xs font-bold tracking-wider uppercase shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:bg-gold-400 flex items-center gap-2 group whitespace-nowrap">
+                            <i data-lucide="download" class="w-4 h-4 group-hover:-translate-y-0.5 transition-transform duration-300"></i> Brochure
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center gap-3">
+                    <a href="#" class="px-3 py-1.5 rounded-md bg-gold-500 text-dark-900 transition-colors text-xs font-bold uppercase shadow-lg flex items-center gap-1 sm:hidden">
+                        <i data-lucide="download" class="w-3 h-3"></i> Brochure
+                    </a>
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-gold-500 focus:outline-none p-2 rounded-md hover:bg-dark-800 transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-dark-900/95 backdrop-blur-xl border-b border-white/10 absolute w-full shadow-2xl max-h-[80vh] overflow-y-auto">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-4 py-3 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-dark-800/50 rounded-xl transition-colors">About</a>
+                <a href="#syllabus" class="block px-4 py-3 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-dark-800/50 rounded-xl transition-colors">Syllabus</a>
+                <a href="#faculty" class="block px-4 py-3 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-dark-800/50 rounded-xl transition-colors">Faculty</a>
+                <a href="#events" class="block px-4 py-3 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-dark-800/50 rounded-xl transition-colors">Events</a>
+                <a href="#gallery" class="block px-4 py-3 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-dark-800/50 rounded-xl transition-colors">Gallery</a>
+                <a href="#faq" class="block px-4 py-3 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-dark-800/50 rounded-xl transition-colors">FAQ</a>
+                <a href="#location" class="block px-4 py-3 text-base font-medium text-gray-300 hover:text-gold-500 hover:bg-dark-800/50 rounded-xl transition-colors">Location</a>
+                
+                <div class="pt-4 mt-2 border-t border-white/10 flex flex-col gap-3">
+                    <a href="#achievements" class="block px-4 py-3 text-base font-bold text-center text-gold-500 border border-gold-500/30 bg-gold-500/10 rounded-xl hover:bg-gold-500 hover:text-dark-900 transition-colors">Wall of Fame</a>
+                    <a href="#" class="block px-4 py-3 text-base font-bold text-center text-dark-900 bg-gold-500 rounded-xl hover:bg-gold-400 transition-colors flex items-center justify-center gap-2">
+                        <i data-lucide="download" class="w-5 h-5"></i> Download Brochure
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80" alt="Financial Markets Background" class="w-full h-full object-cover opacity-[0.15]">
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/90 to-dark-900/30"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-3xl reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-500/10 border border-gold-500/30 text-gold-500 text-sm font-medium mb-8 backdrop-blur-sm animate-pulse-slow">
+                    <i data-lucide="trending-up" class="w-4 h-4"></i>
+                    <span class="tracking-wide">Shaping Future Finance Leaders</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-[1.1] mb-6">
+                    Bachelor of Commerce in <br>
+                    <span class="text-gradient-gold">Financial Markets</span>
+                </h1>
+                <p class="text-gray-400 text-lg lg:text-xl mb-10 leading-relaxed max-w-2xl font-light">
+                    A premier undergraduate program at K.P.B. Hinduja College designed to provide a comprehensive understanding of global financial markets, investments, and risk management.
+                </p>
+                <div class="flex flex-wrap gap-5">
+                    <a href="#events" class="px-8 py-4 rounded-xl bg-gold-500 text-dark-900 font-bold hover:bg-gold-400 transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] flex items-center gap-2 hover:-translate-y-1">
+                        Explore Events <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#about" class="px-8 py-4 rounded-xl glass-panel text-white font-semibold hover:border-gold-500 hover:text-gold-500 transition-all duration-300 hover:-translate-y-1">
+                        Discover the Course
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Academics -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal order-2 lg:order-1 relative px-4 sm:px-0">
+                    <div class="absolute inset-0 bg-gold-500/20 blur-[100px] rounded-full opacity-40"></div>
+                    <img src="https://images.unsplash.com/photo-1590240498701-d70319853925?auto=format&fit=crop&w=800&q=80" alt="Students in seminar" class="relative rounded-2xl shadow-2xl border border-white/10 gold-glow w-full object-cover aspect-[4/3]">
+                    
+                    <!-- Floating Stat Card -->
+                    <div class="absolute -bottom-8 -right-4 sm:-right-8 glass-panel p-6 rounded-2xl shadow-2xl border border-gold-500/30">
+                        <div class="flex items-center gap-5">
+                            <div class="p-4 bg-gold-500/10 rounded-xl text-gold-500 shadow-inner">
+                                <i data-lucide="award" class="w-8 h-8"></i>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-serif font-bold text-white mb-1">NAAC</p>
+                                <p class="text-gold-500 text-xs font-bold uppercase tracking-widest bg-gold-500/10 px-2 py-1 rounded">A+ Grade</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal order-1 lg:order-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-px w-8 bg-gold-500"></div>
+                        <h2 class="text-sm font-bold tracking-widest text-gold-500 uppercase">About the Program</h2>
+                    </div>
+                    <h3 class="text-3xl md:text-5xl font-serif font-bold text-white mb-6 leading-tight">Empowering the Next Generation of Investors</h3>
+                    <p class="text-gray-400 mb-8 leading-relaxed text-lg font-light">
+                        The BFM program integrates theoretical learning with real-world financial applications. We espouse the salient points of the National Education Policy (NEP) 2020, focusing on skill development, financial literacy, and holistic growth.
+                    </p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+                            <div class="mt-1 bg-gold-500/10 p-2 rounded-lg text-gold-500 flex-shrink-0">
+                                <i data-lucide="book-open" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Collaborative Certifications</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">Joint programs with NISM and ANMI focusing on essential financial concepts and practices.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+                            <div class="mt-1 bg-gold-500/10 p-2 rounded-lg text-gold-500 flex-shrink-0">
+                                <i data-lucide="briefcase" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Practical Exposure</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">Regular industry field visits to BSE, NSE, and the RBI Monetary Museum.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+                            <div class="mt-1 bg-gold-500/10 p-2 rounded-lg text-gold-500 flex-shrink-0">
+                                <i data-lucide="users" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-1">Industry Interaction</h4>
+                                <p class="text-gray-400 text-sm leading-relaxed">Guest lectures on CFP, Business Valuation, Actuarial Science, and Derivatives.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syllabus Section (Tabular Format) -->
+    <section id="syllabus" class="py-24 relative bg-dark-950 border-t border-white/5">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.02]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="h-px w-8 bg-gold-500"></div>
+                    <h2 class="text-sm font-bold tracking-widest text-gold-500 uppercase">Curriculum</h2>
+                    <div class="h-px w-8 bg-gold-500"></div>
+                </div>
+                <h3 class="text-3xl md:text-5xl font-serif font-bold text-white mb-6">Program Syllabus Table</h3>
+                <p class="text-gray-400 text-lg font-light">A comprehensive 3-year academic structure integrating theoretical foundations with practical financial market exposure, aligned with NEP 2020 frameworks.</p>
+            </div>
+
+            <!-- Modern Glassmorphism Table -->
+            <div class="glass-panel rounded-2xl overflow-hidden border border-gold-500/20 shadow-[0_0_40px_rgba(0,0,0,0.5)] reveal mx-auto w-full lg:max-w-5xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse min-w-[800px]">
+                        <thead>
+                            <tr class="bg-gold-500/10 border-b border-gold-500/30">
+                                <th class="py-5 px-6 sm:px-8 text-gold-500 font-serif font-bold text-xl w-1/4">Academic Year</th>
+                                <th class="py-5 px-6 sm:px-8 text-gold-500 font-serif font-bold text-xl w-1/4">Semester</th>
+                                <th class="py-5 px-6 sm:px-8 text-gold-500 font-serif font-bold text-xl w-1/2">Key Modules / Subjects</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-300">
+                            <!-- FYBFM -->
+                            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300 group">
+                                <td class="py-6 px-6 sm:px-8 align-top border-r border-white/10 relative" rowspan="2">
+                                    <div class="sticky top-6">
+                                        <span class="text-2xl font-bold text-white block mb-1 group-hover:text-gold-400 transition-colors">FYBFM</span>
+                                        <span class="text-xs text-gold-500 uppercase tracking-widest font-semibold bg-gold-500/10 px-2 py-1 rounded inline-block">First Year</span>
+                                    </div>
+                                </td>
+                                <td class="py-6 px-6 sm:px-8 align-top border-r border-white/10">
+                                    <span class="font-bold text-white text-lg">Semester I</span>
+                                </td>
+                                <td class="py-6 px-6 sm:px-8 align-top">
+                                    <ul class="space-y-2 text-sm text-gray-400">
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Financial Accounting - I</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Introduction to Financial System</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Business Mathematics</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Business Communication - I</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Foundation Course - I</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300 bg-dark-900/30 group">
+                                <td class="py-6 px-6 sm:px-8 align-top border-r border-white/10">
+                                    <span class="font-bold text-white text-lg">Semester II</span>
+                                </td>
+                                <td class="py-6 px-6 sm:px-8 align-top">
+                                    <ul class="space-y-2 text-sm text-gray-400">
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Financial Accounting - II</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Principles of Management</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Business Statistics</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Business Communication - II</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Environmental Science</li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                            <!-- SYBFM -->
+                            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300 group">
+                                <td class="py-6 px-6 sm:px-8 align-top border-r border-white/10 relative" rowspan="2">
+                                    <div class="sticky top-6">
+                                        <span class="text-2xl font-bold text-white block mb-1 group-hover:text-gold-400 transition-colors">SYBFM</span>
+                                        <span class="text-xs text-gold-500 uppercase tracking-widest font-semibold bg-gold-500/10 px-2 py-1 rounded inline-block">Second Year</span>
+                                    </div>
+                                </td>
+                                <td class="py-6 px-6 sm:px-8 align-top border-r border-white/10">
+                                    <span class="font-bold text-white text-lg">Semester III</span>
+                                </td>
+                                <td class="py-6 px-6 sm:px-8 align-top">
+                                    <ul class="space-y-2 text-sm text-gray-400">
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Debt Markets</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Equity Markets</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Portfolio Management</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Business Law - I</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Computer Applications in Finance</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300 bg-dark-900/30 group">
+                                <td class="py-6 px-6 sm:px-8 align-top border-r border-white/10">
+                                    <span class="font-bold text-white text-lg">Semester IV</span>
+                                </td>
+                                <td class="py-6 px-6 sm:px-8 align-top">
+                                    <ul class="space-y-2 text-sm text-gray-400">
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span class="text-white font-medium">Technical Analysis</span></li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span class="text-white font-medium">Direct Tax</span></li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span class="text-white font-medium">Business Valuation</span></li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Corporate Finance</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Foreign Exchange Markets</li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                            <!-- TYBFM -->
+                            <tr class="border-b border-white/10 hover:bg-white/5 transition-colors duration-300 group">
+                                <td class="py-6 px-6 sm:px-8 align-top border-r border-white/10 relative" rowspan="2">
+                                    <div class="sticky top-6">
+                                        <span class="text-2xl font-bold text-white block mb-1 group-hover:text-gold-400 transition-colors">TYBFM</span>
+                                        <span class="text-xs text-gold-500 uppercase tracking-widest font-semibold bg-gold-500/10 px-2 py-1 rounded inline-block">Third Year</span>
+                                    </div>
+                                </td>
+                                <td class="py-6 px-6 sm:px-8 align-top border-r border-white/10">
+                                    <span class="font-bold text-white text-lg">Semester V</span>
+                                </td>
+                                <td class="py-6 px-6 sm:px-8 align-top">
+                                    <ul class="space-y-2 text-sm text-gray-400">
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span class="text-white font-medium">Financial Derivatives</span></li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span class="text-white font-medium">Equity Research</span></li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span class="text-white font-medium">Business Ethics & Corporate Governance</span></li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span class="text-white font-medium">Strategic Consultancy Management</span></li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Corporate Accounting</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors duration-300 bg-dark-900/30 group">
+                                <td class="py-6 px-6 sm:px-8 align-top border-r border-white/10">
+                                    <span class="font-bold text-white text-lg">Semester VI</span>
+                                </td>
+                                <td class="py-6 px-6 sm:px-8 align-top">
+                                    <ul class="space-y-2 text-sm text-gray-400">
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span class="text-white font-medium">Actuarial Science & Data Analytics</span></li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Risk Management</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Mutual Fund Management</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Organizational Behaviour</li>
+                                        <li class="flex items-start gap-2"><i data-lucide="check" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> Project Work</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- View Detailed Syllabus Document -->
+            <div class="mt-12 text-center reveal">
+                <a href="#" class="inline-flex items-center gap-3 px-8 py-3 rounded-xl bg-dark-900 border border-gold-500/30 text-gold-500 font-medium hover:bg-gold-500 hover:text-dark-900 transition-all duration-300 shadow-lg group">
+                    <i data-lucide="file-text" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                    View Detailed Syllabus (NEP 2020)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership / Faculty -->
+    <section id="faculty" class="py-24 bg-dark-900 border-y border-white/5 relative overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gold-500/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="h-px w-8 bg-gold-500"></div>
+                    <h2 class="text-sm font-bold tracking-widest text-gold-500 uppercase">Leadership</h2>
+                    <div class="h-px w-8 bg-gold-500"></div>
+                </div>
+                <h3 class="text-3xl md:text-5xl font-serif font-bold text-white mb-6">Our Distinguished Faculty</h3>
+                <p class="text-gray-400 text-lg font-light">Guiding students with years of academic excellence and industry expertise.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                <!-- Coordinator -->
+                <div class="glass-panel rounded-2xl p-10 hover:border-gold-500/50 transition-all duration-500 group gold-glow reveal flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-36 h-36 rounded-full mb-6 p-1 bg-gradient-to-tr from-gold-600 via-gold-400 to-gold-200 shadow-xl">
+                        <img src="https://ui-avatars.com/api/?name=Saira+Shaikh&background=0a0a0a&color=D4AF37&size=256" alt="Dr. Saira Banoo Shaikh" class="w-full h-full rounded-full object-cover border-4 border-dark-900">
+                    </div>
+                    <h4 class="text-2xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Dr. Saira Banoo Shaikh</h4>
+                    <p class="text-gold-500 text-xs font-bold uppercase tracking-widest mb-4 bg-gold-500/10 px-3 py-1 rounded-full">Department Head & Co-ordinator</p>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">Ph.D, M.Com, M.Phil, MBA(Fin.), UGC-NET, SET, TRP</p>
+                </div>
+
+                <!-- Member -->
+                <div class="glass-panel rounded-2xl p-10 hover:border-gold-500/50 transition-all duration-500 group gold-glow reveal flex flex-col items-center text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="w-36 h-36 rounded-full mb-6 p-1 bg-gradient-to-tr from-gold-600 via-gold-400 to-gold-200 shadow-xl">
+                        <img src="https://ui-avatars.com/api/?name=Hemant+Bhatti&background=0a0a0a&color=D4AF37&size=256" alt="Dr. Hemant Bhatti" class="w-full h-full rounded-full object-cover border-4 border-dark-900">
+                    </div>
+                    <h4 class="text-2xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Dr. Hemant Bhatti</h4>
+                    <p class="text-gold-500 text-xs font-bold uppercase tracking-widest mb-4 bg-gold-500/10 px-3 py-1 rounded-full">Faculty Member</p>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">Ph.D, M.Com, M.Phil, MMS, UGC-NET, B.Ed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flagship Events -->
+    <section id="events" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="h-px w-8 bg-gold-500"></div>
+                    <h2 class="text-sm font-bold tracking-widest text-gold-500 uppercase">Flagship Initiatives</h2>
+                    <div class="h-px w-8 bg-gold-500"></div>
+                </div>
+                <h3 class="text-3xl md:text-5xl font-serif font-bold text-white">Department Events & Fests</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Finvestor -->
+                <div class="group relative overflow-hidden rounded-2xl bg-dark-800 border border-white/10 reveal shadow-2xl">
+                    <div class="aspect-[16/10] w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80" alt="Finvestor Fest" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="absolute bottom-0 w-full p-8 md:p-10 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold tracking-wider text-dark-900 bg-gold-500 rounded-md uppercase shadow-lg">
+                            <i data-lucide="calendar" class="w-3 h-3"></i> Annual Fest
+                        </div>
+                        <h4 class="text-3xl md:text-4xl font-serif font-bold text-white mb-4">FINVESTOR</h4>
+                        <p class="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
+                            A two-day intercollegiate educational fest fostering financial literacy. Demystifying the world of finance through workshops, panel discussions, quizzes, and practical trading simulations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Investisiya -->
+                <div class="group relative overflow-hidden rounded-2xl bg-dark-800 border border-white/10 reveal shadow-2xl">
+                    <div class="aspect-[16/10] w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80" alt="Investisiya Seminar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="absolute bottom-0 w-full p-8 md:p-10 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold tracking-wider text-dark-900 bg-gold-500 rounded-md uppercase shadow-lg">
+                            <i data-lucide="mic" class="w-3 h-3"></i> Seminar
+                        </div>
+                        <h4 class="text-3xl md:text-4xl font-serif font-bold text-white mb-4">Investisiya</h4>
+                        <p class="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
+                            Organized to commemorate 'World Investor Week' in collaboration with BSE, ANMI, and NISM. Features interactive events, street plays, and industry leader keynotes to encourage smart investment strategies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Activities Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 reveal">
+                <div class="glass-panel p-8 rounded-2xl hover:border-gold-500/40 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 bg-dark-900 rounded-xl flex items-center justify-center mb-6 border border-white/5 group-hover:border-gold-500/30 group-hover:bg-gold-500/10 transition-colors">
+                        <i data-lucide="building" class="w-7 h-7 text-gold-500"></i>
+                    </div>
+                    <h5 class="text-xl font-bold text-white mb-3">Field Visits</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">Educational trips to the Bombay Stock Exchange (BSE), National Stock Exchange (NSE), and RBI Monetary Museum.</p>
+                </div>
+                
+                <div class="glass-panel p-8 rounded-2xl hover:border-gold-500/40 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 bg-dark-900 rounded-xl flex items-center justify-center mb-6 border border-white/5 group-hover:border-gold-500/30 group-hover:bg-gold-500/10 transition-colors">
+                        <i data-lucide="heart-handshake" class="w-7 h-7 text-gold-500"></i>
+                    </div>
+                    <h5 class="text-xl font-bold text-white mb-3">CSR & Field Projects</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">Merging VCPE product sales with social causes, raising funds for the Vatsalya Foundation via 'The Finvestor Carnival'.</p>
+                </div>
+
+                <div class="glass-panel p-8 rounded-2xl hover:border-gold-500/40 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 bg-dark-900 rounded-xl flex items-center justify-center mb-6 border border-white/5 group-hover:border-gold-500/30 group-hover:bg-gold-500/10 transition-colors">
+                        <i data-lucide="music" class="w-7 h-7 text-gold-500"></i>
+                    </div>
+                    <h5 class="text-xl font-bold text-white mb-3">Cultural & Sports</h5>
+                    <p class="text-gray-400 text-sm leading-relaxed">Vibrant celebrations including Traditional Day, Garba Night, Crescendo, and the BFM Premier League.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 bg-[#050505] overflow-hidden relative border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="h-px w-8 bg-gold-500"></div>
+                    <h2 class="text-sm font-bold tracking-widest text-gold-500 uppercase">Life at Hinduja</h2>
+                    <div class="h-px w-8 bg-gold-500"></div>
+                </div>
+                <h3 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Department Gallery</h3>
+                <p class="text-gray-400 font-light">Witness the journey of innovation and excellence through our department's milestones.</p>
+            </div>
+
+        <!-- Looping Marquee -->
+        <div class="relative overflow-hidden group/marquee py-4">
+            <div class="flex gap-6 animate-scroll hover:[animation-play-state:paused] w-max">
+                <div class="flex gap-6 shrink-0">
+                    <!-- Card 1 -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Finvestor Annual Fest', 'Annual Fest', 'Feb 2025', 'Finvestor is our flagship inter-collegiate festival.', 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80')">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Annual Fest</span>
+                            <h4 class="text-xl font-serif font-bold text-white leading-tight">Finvestor Annual Fest</h4>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('BSE Industrial Visit', 'Industrial Visit', 'Dec 2024', 'Students visiting the BSE.', 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=800&q=80')">
+                        <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Industrial Visit</span>
+                            <h4 class="text-xl font-serif font-bold text-white leading-tight">BSE Trading Floor</h4>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('NISM Workshop', 'Workshop', 'Jan 2025', 'Professional certification workshop.', 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80')">
+                        <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Workshop</span>
+                            <h4 class="text-xl font-serif font-bold text-white leading-tight">NISM Certification</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-6 shrink-0">
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50" onclick="openGalleryModal('Finvestor Annual Fest', 'Annual Fest', 'Feb 2025', '...', 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80')">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Finvestor Annual Fest</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50" onclick="openGalleryModal('BSE Industrial Visit', 'Industrial Visit', 'Dec 2024', '...', 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=800&q=80')">
+                        <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">BSE Trading Floor</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50" onclick="openGalleryModal('NISM Workshop', 'Workshop', 'Jan 2025', '...', 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80')">
+                        <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">NISM Certification</h4></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Wall of Fame / 2x3 Card Grid -->
+    <section id="achievements" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="h-px w-8 bg-gold-500"></div>
+                    <h2 class="text-sm font-bold tracking-widest text-gold-500 uppercase">Celebrating Excellence</h2>
+                    <div class="h-px w-8 bg-gold-500"></div>
+                </div>
+                <h3 class="text-3xl md:text-5xl font-serif font-bold text-white">Wall of Fame</h3>
+            </div>
+
+            <!-- Wall of Fame Marquee -->
+            <div class="relative overflow-hidden group/marquee py-4">
+                <div class="flex gap-8 animate-scroll hover:[animation-play-state:paused] w-max">
+                    <!-- Original Set -->
+                    <div class="flex gap-8 shrink-0">
+                        <!-- Card 1: Nischay Goenka -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" alt="Nischay Goenka" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">TYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Nischay Goenka</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Dalmia Stock Exchange'25</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Fall of Fame (Arthanomics)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Aditya Shinde -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" alt="Aditya Shinde" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">TYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Aditya Shinde</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Dalmia Stock Exchange'25</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="medal" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Position</strong> - Bull's Eye Quiz</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Roxane Choksi -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Roxane Choksi" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">SYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Roxane Choksi</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="star" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">Winner</strong> - NSE Quiz Series 5</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Agree to Disagree</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Vidhi Jain -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=600&q=80" alt="Vidhi Jain" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">Cultural</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Vidhi Hasmukh Jain</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Indian Folk Dance</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="award" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Prize</strong> - Dealicious</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Anurag Pandey -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" alt="Anurag Pandey" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">SYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Anurag Pandey</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Story Writing</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="medal" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">2nd Rank</strong> - Research Presentation</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 6: Bhoomi Sachdeva -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" alt="Bhoomi Sachdeva" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">FYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Bhoomi Sachdeva</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Athena Runway</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="star" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">Winner</strong> - Reel Making</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicated Set for infinite loop -->
+                    <div class="flex gap-8 shrink-0">
+                        <!-- Duplicate Card 1 -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">TYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Nischay Goenka</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Dalmia Stock Exchange'25</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Fall of Fame (Arthanomics)</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate Card 2 -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">TYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Aditya Shinde</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Dalmia Stock Exchange'25</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="medal" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Position</strong> - Bull's Eye Quiz</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate Card 3 -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">SYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Roxane Choksi</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="star" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">Winner</strong> - NSE Quiz Series 5</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Agree to Disagree</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate Card 4 -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">Cultural</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Vidhi Hasmukh Jain</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Indian Folk Dance</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="award" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Prize</strong> - Dealicious</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate Card 5: Anurag Pandey -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">SYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Anurag Pandey</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Story Writing</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="medal" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">2nd Rank</strong> - Research Presentation</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate Card 6: Bhoomi Sachdeva -->
+                        <div class="group relative w-[320px] rounded-2xl overflow-hidden border border-white/5 bg-[#0a0a0a] shadow-2xl transition-all duration-500 hover:border-gold-500/50">
+                            <div class="relative h-64 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-5">
+                                    <span class="px-3 py-1.5 text-[10px] font-bold bg-gold-500 text-dark-900 rounded-md uppercase tracking-wider">FYBFM</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-serif font-bold text-white mb-4">Bhoomi Sachdeva</h4>
+                                <ul class="text-xs text-gray-400 space-y-3">
+                                    <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Athena Runway</span></li>
+                                    <li class="flex items-start gap-3"><i data-lucide="star" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">Winner</strong> - Reel Making</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 relative overflow-hidden bg-[#050505]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="h-px w-8 bg-gold-500"></div>
+                    <h2 class="text-sm font-bold tracking-widest text-gold-500 uppercase">Common Queries</h2>
+                    <div class="h-px w-8 bg-gold-500"></div>
+                </div>
+                <h3 class="text-3xl md:text-5xl font-serif font-bold text-white mb-4">Frequently Asked Questions</h3>
+                <p class="text-gray-400 font-light max-w-2xl mx-auto">Everything you need to know about the BFM programme at Hinduja College.</p>
+            </div>
+
+            <div class="space-y-6 reveal">
+                <!-- FAQ Item 1: Eligibility -->
+                <div class="faq-item group border border-white/5 bg-[#0a0a0a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-gold-500/30">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                        <span class="text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">Eligibility & Admission Criteria</span>
+                        <div class="faq-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold-500 group-hover:border-gold-500/50 transition-all">
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-500"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="px-8 pb-8 text-gray-400 leading-relaxed space-y-4 text-sm">
+                            <p>Candidates aspiring to pursue <span class="text-white font-medium">B.Com (Financial Markets)</span> Degree shall have passed XII std. examination of the Maharashtra State Board of Higher Secondary Education or its equivalent.</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                                <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                                    <h5 class="text-gold-500 font-bold mb-1 text-xs uppercase tracking-wider">General Category</h5>
+                                    <p class="text-white text-base">45% Aggregate</p>
+                                </div>
+                                <div class="p-4 bg-white/5 rounded-xl border border-white/5">
+                                    <h5 class="text-gold-500 font-bold mb-1 text-xs uppercase tracking-wider">Reserved Category</h5>
+                                    <p class="text-white text-base">40% Aggregate</p>
+                                </div>
+                            </div>
+                            <p class="text-xs italic border-l-2 border-gold-500 pl-4 py-1">Admission is strictly based on merit. No entrance exam is required for this programme.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2: Programme Outcome -->
+                <div class="faq-item group border border-white/5 bg-[#0a0a0a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-gold-500/30">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                        <span class="text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">What are the Programme Outcomes?</span>
+                        <div class="faq-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold-500 group-hover:border-gold-500/50 transition-all">
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-500"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="px-8 pb-8 text-gray-400 leading-relaxed text-sm">
+                            <p class="mb-4 text-white/80">Learners will develop a solid understanding of role, structure, and functioning of financial markets.</p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span>Develop analytical reasoning to assess investment opportunities and manage risks.</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span>Analyse global challenges and exposure to newer avenues in finance.</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span>Build competencies in professional skills and ethics required for financial growth.</span></li>
+                                <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0"></i> <span>Gain research proficiency by evaluating financial viability of various projects.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3: Scheme of Examination -->
+                <div class="faq-item group border border-white/5 bg-[#0a0a0a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-gold-500/30">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                        <span class="text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">Scheme of Examination</span>
+                        <div class="faq-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold-500 group-hover:border-gold-500/50 transition-all">
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-500"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="px-8 pb-8 text-gray-400 leading-relaxed text-sm">
+                            <p class="mb-6">The evaluation is divided into two comprehensive parts to ensure balanced academic assessment:</p>
+                            <div class="flex flex-col sm:flex-row gap-6">
+                                <div class="flex-1 p-6 rounded-2xl bg-gradient-to-br from-gold-500/10 to-transparent border border-gold-500/20">
+                                    <div class="text-3xl font-serif font-bold text-gold-500 mb-1">40%</div>
+                                    <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-2">Continuous Internal Assessment</h5>
+                                    <p class="text-xs text-gray-500">Projects, assignments, and class participation.</p>
+                                </div>
+                                <div class="flex-1 p-6 rounded-2xl bg-gradient-to-br from-white/10 to-transparent border border-white/10">
+                                    <div class="text-3xl font-serif font-bold text-white mb-1">60%</div>
+                                    <h5 class="text-white font-bold text-sm uppercase tracking-wider mb-2">Semester End Examination</h5>
+                                    <p class="text-xs text-gray-500">Final comprehensive written assessments.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4: Placements & Highlights -->
+                <div class="faq-item group border border-white/5 bg-[#0a0a0a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-gold-500/30">
+                    <button class="w-full px-8 py-6 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
+                        <span class="text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">Career Prospects & Industry Exposure</span>
+                        <div class="faq-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold-500 group-hover:border-gold-500/50 transition-all">
+                            <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-500"></i>
+                        </div>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <div class="px-8 pb-8 text-gray-400 leading-relaxed text-sm">
+                            <div class="space-y-6">
+                                <div>
+                                    <h5 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="building" class="w-4 h-4 text-gold-500"></i> Leading Recruiters</h5>
+                                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                        <div class="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-center text-xs hover:border-gold-500/30 transition-colors">TCS</div>
+                                        <div class="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-center text-xs hover:border-gold-500/30 transition-colors">Deloitte</div>
+                                        <div class="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-center text-xs hover:border-gold-500/30 transition-colors">Motilal Oswal</div>
+                                        <div class="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-center text-xs hover:border-gold-500/30 transition-colors">Eaglewings</div>
+                                        <div class="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-center text-xs hover:border-gold-500/30 transition-colors">South Indian Bank</div>
+                                        <div class="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-center text-xs hover:border-gold-500/30 transition-colors">India Infoline</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4 text-gold-500"></i> Highlights</h5>
+                                    <p class="text-xs">Industry exposure through BSE Field Visits, NISM Certificate Programs, and practical field projects like the Finvestor Carnival.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Map Section -->
+    <section id="location" class="py-24 relative bg-dark-950 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="h-px w-8 bg-gold-500"></div>
+                    <h2 class="text-sm font-bold tracking-widest text-gold-500 uppercase">Visit Us</h2>
+                    <div class="h-px w-8 bg-gold-500"></div>
+                </div>
+                <h3 class="text-3xl md:text-5xl font-serif font-bold text-white">Campus Location</h3>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch reveal">
+                <!-- Contact Info Card -->
+                <div class="lg:col-span-1 glass-panel border border-white/10 rounded-2xl p-8 shadow-2xl flex flex-col justify-center space-y-8 relative overflow-hidden gold-glow">
+                    <!-- Decorative Blur -->
+                    <div class="absolute -right-10 -top-10 w-40 h-40 bg-gold-500/10 rounded-full blur-2xl"></div>
+                    
+                    <div class="relative z-10">
+                        <h4 class="text-xl font-serif font-bold text-white mb-4 flex items-center gap-3">
+                            <div class="bg-gold-500/10 p-2 rounded-lg">
+                                <i data-lucide="map-pin" class="text-gold-500 w-5 h-5"></i>
+                            </div>
+                            Campus Address
+                        </h4>
+                        <p class="text-gray-400 leading-relaxed text-lg ml-12">
+                            Sadhana Textile Mill,<br>
+                            Worli, Mumbai,<br>
+                            Maharashtra 400018
+                        </p>
+                    </div>
+
+                    <div class="w-full h-px bg-white/10"></div>
+
+                    <div class="relative z-10">
+                        <h4 class="text-xl font-serif font-bold text-white mb-6 flex items-center gap-3">
+                            <div class="bg-gold-500/10 p-2 rounded-lg">
+                                <i data-lucide="train" class="text-gold-500 w-5 h-5"></i>
+                            </div>
+                            Nearest Stations
+                        </h4>
+                        <ul class="space-y-5 ml-2">
+                            <li class="flex items-start gap-4">
+                                <div class="p-2 bg-dark-900 rounded-lg border border-white/5 mt-1 shadow-inner">
+                                    <span class="block w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.6)]"></span>
+                                </div>
+                                <div>
+                                    <p class="text-white font-semibold text-lg">Prabhadevi</p>
+                                    <p class="text-xs text-gold-500 font-bold uppercase tracking-wider mt-1">Western Railway</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-4">
+                                <div class="p-2 bg-dark-900 rounded-lg border border-white/5 mt-1 shadow-inner">
+                                    <span class="block w-2.5 h-2.5 rounded-full bg-red-400 shadow-[0_0_8px_rgba(248,113,113,0.6)]"></span>
+                                </div>
+                                <div>
+                                    <p class="text-white font-semibold text-lg">Parel</p>
+                                    <p class="text-xs text-gold-500 font-bold uppercase tracking-wider mt-1">Central Railway</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Map Frame -->
+                <div class="lg:col-span-2 rounded-2xl overflow-hidden border border-white/10 relative min-h-[400px] lg:min-h-full shadow-2xl group">
+                    <!-- Embedded Google Map using Place ID/Coordinates for Sadhana Mill, Worli -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.85461159954!2d72.81804247599026!3d19.02613098173451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cedca0a0a559%3A0xc47e30560e9ebcc4!2sSadhana%20Mill%20Compound!5e0!3m2!1sen!2sin!4v1709664539655!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="absolute inset-0 w-full h-full object-cover map-dark-theme transition-transform duration-700 group-hover:scale-[1.02]">
+                    </iframe>
+                    <!-- Inner glow/border to blend with dark mode -->
+                    <div class="absolute inset-0 pointer-events-none border border-gold-500/20 rounded-2xl z-10 shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#030303] border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center p-1 shadow-xl overflow-hidden border border-gold-500/20">
+                            <img src="https://www.hindujacollege.edu.in/assets/newimages/logo/logo.webp" alt="logo" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <h2 class="text-white font-serif font-bold text-xl">K.P.B. Hinduja College</h2>
+                            <p class="text-gold-500 text-xs font-semibold tracking-widest uppercase mt-0.5">BFM Department</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+                        The Bachelor of Commerce in Financial Markets (BFM) department is dedicated to bridging the gap between academic theories and practical financial market realities, fostering the next generation of finance professionals.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm border-b border-white/10 pb-2 inline-block">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#about" class="hover:text-gold-500 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> About Course</a></li>
+                        <li><a href="#syllabus" class="hover:text-gold-500 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Program Syllabus</a></li>
+                        <li><a href="#faculty" class="hover:text-gold-500 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Our Faculty</a></li>
+                        <li><a href="#events" class="hover:text-gold-500 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Flagship Events</a></li>
+                        <li><a href="#gallery" class="hover:text-gold-500 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Photo Gallery</a></li>
+                        <li><a href="#location" class="hover:text-gold-500 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-3 h-3"></i> Campus Location</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-sm border-b border-white/10 pb-2 inline-block">Contact</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 mt-1 text-gold-500 flex-shrink-0"></i>
+                            <span class="leading-relaxed">Sadhana Textile Mill,<br>Worli, Mumbai,<br>Maharashtra 400018</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-xs tracking-wide">© 2026 BFM Department, K.P.B. Hinduja College. All rights reserved.</p>
+                <div class="flex gap-5 text-gray-400">
+                    <a href="#" class="hover:text-gold-500 transition-colors transform hover:scale-110"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-gold-500 transition-colors transform hover:scale-110"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gallery Detail Modal -->
+    <div id="gallery-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 lg:p-8 bg-black/95 backdrop-blur-sm transition-all duration-300">
+        <div class="relative w-full max-w-5xl bg-[#0a0a0a] rounded-[2.5rem] overflow-hidden border border-gold-500/30 shadow-[0_0_50px_rgba(212,175,55,0.2)] flex flex-col lg:flex-row max-h-[90vh]">
+            <!-- Close Button -->
+            <button onclick="closeGalleryModal()" class="absolute top-6 right-6 z-50 w-12 h-12 rounded-full bg-dark-900 border border-gold-500/50 text-gold-500 flex items-center justify-center hover:bg-gold-500 hover:text-dark-900 transition-all duration-300 shadow-xl">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+
+            <!-- Image Section -->
+            <div class="lg:w-1/2 h-64 lg:h-auto relative">
+                <img id="modal-image" src="" alt="Event Detail" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent"></div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="lg:w-1/2 p-8 lg:p-14 flex flex-col justify-center overflow-y-auto">
+                <div class="flex items-center gap-4 mb-6">
+                    <span id="modal-category" class="px-4 py-1.5 bg-gold-500/10 border border-gold-500/30 text-gold-500 text-xs font-bold uppercase tracking-widest rounded-full">Category</span>
+                    <span id="modal-date" class="text-sm font-medium text-gray-400 flex items-center gap-2 font-mono"><i data-lucide="calendar" class="w-4 h-4"></i> Date</span>
+                </div>
+                
+                <h4 id="modal-title" class="text-3xl lg:text-5xl font-serif font-bold text-white mb-6 leading-tight">Event Title</h4>
+                
+                <div class="w-20 h-1 bg-gold-500 mb-8 rounded-full"></div>
+                
+                <p id="modal-description" class="text-gray-400 leading-relaxed text-lg font-light mb-10">
+                    Detailed description goes here...
+                </p>
+
+                <div class="flex flex-wrap gap-4 mt-auto">
+                    <div class="flex items-center gap-3 text-gold-500 text-sm font-bold tracking-wider uppercase">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i> Official Event
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts for interactivity and animations -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar blur and background on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg', 'bg-dark-900/95');
+                navbar.classList.remove('bg-dark-900/70');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-dark-900/95');
+                navbar.classList.add('bg-dark-900/70');
+            }
+        });
+
+        // Intersection Observer for scroll animations (reveal logic)
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Stop observing once revealed
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Gallery Modal Logic
+        const modal = document.getElementById('gallery-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalDate = document.getElementById('modal-date');
+        const modalDesc = document.getElementById('modal-description');
+        const modalImg = document.getElementById('modal-image');
+
+        function openGalleryModal(title, category, date, desc, img) {
+            modalTitle.textContent = title;
+            modalCategory.textContent = category;
+            modalDate.textContent = date;
+            modalDesc.textContent = desc;
+            modalImg.src = img;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+            
+            // Re-initialize Lucide for the modal content if needed
+            lucide.createIcons();
+        }
+
+        function closeGalleryModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close on backdrop click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeGalleryModal();
+        });
+
+        // FAQ Accordion Logic
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon i');
+            const item = button.closest('.faq-item');
+            
+            // Close other items
+            document.querySelectorAll('.faq-content').forEach(otherContent => {
+                if (otherContent !== content) {
+                    otherContent.style.maxHeight = null;
+                    const otherItem = otherContent.closest('.faq-item');
+                    otherItem.classList.remove('border-gold-500/30', 'bg-gold-500/5', 'shadow-[0_0_20px_rgba(212,175,55,0.1)]');
+                    const otherIcon = otherItem.querySelector('.faq-icon i');
+                    if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Toggle current item
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                item.classList.remove('border-gold-500/30', 'bg-gold-500/5', 'shadow-[0_0_20px_rgba(212,175,55,0.1)]');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                item.classList.add('border-gold-500/30', 'bg-gold-500/5', 'shadow-[0_0_20px_rgba(212,175,55,0.1)]');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Close on ESC key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeGalleryModal();
+            }
+        });
+    </script>
+</body>
+</html>
