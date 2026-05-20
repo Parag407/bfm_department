@@ -50,6 +50,10 @@
                         scroll: {
                             '0%': { transform: 'translateX(0)' },
                             '100%': { transform: 'translateX(-50%)' },
+                        },
+                        'scroll-reverse': {
+                            '0%': { transform: 'translateX(-50%)' },
+                            '100%': { transform: 'translateX(0)' },
                         }
                     }
                 }
@@ -228,13 +232,13 @@
     <nav class="fixed w-full z-50 bg-dark-900/70 backdrop-blur-xl border-b border-white/5 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-4 group cursor-pointer">
-                    <div class="w-11 h-11 rounded-full bg-gold-500 flex items-center justify-center border-2 border-gold-300 shadow-[0_0_15px_rgba(212,175,55,0.4)] group-hover:scale-105 transition-transform duration-300 overflow-hidden p-1">
+                <div class="flex items-center gap-2 sm:gap-4 group cursor-pointer shrink-0">
+                    <div class="w-9 h-9 sm:w-11 h-11 rounded-full bg-gold-500 flex items-center justify-center border-2 border-gold-300 shadow-[0_0_15px_rgba(212,175,55,0.4)] group-hover:scale-105 transition-transform duration-300 overflow-hidden p-1">
                         <img src="https://www.hindujacollege.edu.in/assets/newimages/logo/logo.webp" alt="logo" class="w-full h-full object-contain">
                     </div>
-                    <div class="sm:block">
-                        <h1 class="text-white font-serif font-bold text-xl tracking-wide group-hover:text-gold-400 transition-colors">K.P.B. Hinduja College</h1>
-                        <p class="text-gold-500 text-xs tracking-widest uppercase font-semibold">B.F.M Department</p>
+                    <div class="block">
+                        <h1 class="text-white font-serif font-bold text-sm sm:text-base md:text-xl tracking-wide group-hover:text-gold-400 transition-colors whitespace-nowrap">K.P.B. Hinduja College</h1>
+                        <p class="text-gold-500 text-[10px] sm:text-xs tracking-widest uppercase font-semibold">B.F.M Department</p>
                     </div>
                 </div>
                 
@@ -579,9 +583,9 @@
                     <div class="w-36 h-36 rounded-full mb-6 p-1 bg-gradient-to-tr from-gold-600 via-gold-400 to-gold-200 shadow-xl">
                         <img src="https://ui-avatars.com/api/?name=Saira+Shaikh&background=0a0a0a&color=D4AF37&size=256" alt="Dr. Saira Banoo Shaikh" class="w-full h-full rounded-full object-cover border-4 border-dark-900">
                     </div>
-                    <h4 class="text-2xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Dr. Saira Banoo Shaikh</h4>
-                    <p class="text-gold-500 text-xs font-bold uppercase tracking-widest mb-4 bg-gold-500/10 px-3 py-1 rounded-full">Department Head & Co-ordinator</p>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">Ph.D, M.Com, M.Phil, MBA(Fin.), UGC-NET, SET, TRP</p>
+                    <h4 class="text-xl md:text-2xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Dr. Saira Banoo Shaikh</h4>
+                    <p class="text-gold-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-4 bg-gold-500/10 px-3 py-1 rounded-full">Department Head & Co-ordinator</p>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs">Ph.D, M.Com, M.Phil, MBA(Fin.), UGC-NET, SET, TRP</p>
                 </div>
 
                 <!-- Member -->
@@ -590,9 +594,9 @@
                     <div class="w-36 h-36 rounded-full mb-6 p-1 bg-gradient-to-tr from-gold-600 via-gold-400 to-gold-200 shadow-xl">
                         <img src="https://ui-avatars.com/api/?name=Hemant+Bhatti&background=0a0a0a&color=D4AF37&size=256" alt="Dr. Hemant Bhatti" class="w-full h-full rounded-full object-cover border-4 border-dark-900">
                     </div>
-                    <h4 class="text-2xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Dr. Hemant Bhatti</h4>
-                    <p class="text-gold-500 text-xs font-bold uppercase tracking-widest mb-4 bg-gold-500/10 px-3 py-1 rounded-full">Faculty Member</p>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">Ph.D, M.Com, M.Phil, MMS, UGC-NET, B.Ed</p>
+                    <h4 class="text-xl md:text-2xl font-serif font-bold text-white mb-2 group-hover:text-gold-400 transition-colors">Dr. Hemant Bhatti</h4>
+                    <p class="text-gold-500 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-4 bg-gold-500/10 px-3 py-1 rounded-full">Faculty Member</p>
+                    <p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs">Ph.D, M.Com, M.Phil, MMS, UGC-NET, B.Ed</p>
                 </div>
             </div>
         </div>
@@ -614,15 +618,15 @@
                 <!-- Finvestor -->
                 <div class="group relative overflow-hidden rounded-2xl bg-dark-800 border border-white/10 reveal shadow-2xl">
                     <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1000&q=80" alt="Finvestor Fest" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out">
+                        <img src="assets/bfm_pictures/finvestor.png" alt="Finvestor Fest" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="absolute bottom-0 w-full p-8 md:p-10 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                         <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold tracking-wider text-dark-900 bg-gold-500 rounded-md uppercase shadow-lg">
                             <i data-lucide="calendar" class="w-3 h-3"></i> Annual Fest
                         </div>
-                        <h4 class="text-3xl md:text-4xl font-serif font-bold text-white mb-4">FINVESTOR</h4>
-                        <p class="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
+                        <h4 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white mb-4">FINVESTOR</h4>
+                        <p class="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
                             A two-day intercollegiate educational fest fostering financial literacy. Demystifying the world of finance through workshops, panel discussions, quizzes, and practical trading simulations.
                         </p>
                     </div>
@@ -631,15 +635,15 @@
                 <!-- Investisiya -->
                 <div class="group relative overflow-hidden rounded-2xl bg-dark-800 border border-white/10 reveal shadow-2xl">
                     <div class="aspect-[16/10] w-full overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80" alt="Investisiya Seminar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out">
+                        <img src="assets/bfm_pictures/investor awareness rally.png" alt="Investisiya Seminar" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000 ease-out">
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="absolute bottom-0 w-full p-8 md:p-10 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                         <div class="inline-flex items-center gap-2 px-3 py-1 mb-4 text-xs font-bold tracking-wider text-dark-900 bg-gold-500 rounded-md uppercase shadow-lg">
                             <i data-lucide="mic" class="w-3 h-3"></i> Seminar
                         </div>
-                        <h4 class="text-3xl md:text-4xl font-serif font-bold text-white mb-4">Investisiya</h4>
-                        <p class="text-gray-300 text-sm md:text-base leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
+                        <h4 class="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white mb-4">Investisiya</h4>
+                        <p class="text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
                             Organized to commemorate 'World Investor Week' in collaboration with BSE, ANMI, and NISM. Features interactive events, street plays, and industry leader keynotes to encourage smart investment strategies.
                         </p>
                     </div>
@@ -687,56 +691,279 @@
                 <p class="text-gray-400 font-light">Witness the journey of innovation and excellence through our department's milestones.</p>
             </div>
 
-        <!-- Looping Marquee -->
-        <div class="relative overflow-hidden group/marquee py-4">
+        <!-- Looping Marquee Row 1 (Scroll Left) -->
+        <div class="relative overflow-hidden group/marquee py-2">
             <div class="flex gap-6 animate-scroll hover:[animation-play-state:paused] w-max">
                 <div class="flex gap-6 shrink-0">
-                    <!-- Card 1 -->
+                    <!-- Card 1: BSE Industrial Visit -->
                     <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
-                         onclick="openGalleryModal('Finvestor Annual Fest', 'Annual Fest', 'Feb 2025', 'Finvestor is our flagship inter-collegiate festival.', 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
-                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Annual Fest</span>
-                            <h4 class="text-xl font-serif font-bold text-white leading-tight">Finvestor Annual Fest</h4>
-                        </div>
-                    </div>
-                    <!-- Card 2 -->
-                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
-                         onclick="openGalleryModal('BSE Industrial Visit', 'Industrial Visit', 'Dec 2024', 'Students visiting the BSE.', 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                         onclick="openGalleryModal('BSE Industrial Visit', 'Industrial Visit', 'Dec 2024', 'A practical learning visit to the Bombay Stock Exchange (BSE) trading floor to understand real-time trading operations.', 'assets/bfm_pictures/bse visit.png')">
+                        <img src="assets/bfm_pictures/bse visit.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
                         <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
                             <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Industrial Visit</span>
-                            <h4 class="text-xl font-serif font-bold text-white leading-tight">BSE Trading Floor</h4>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">BSE Industrial Visit</h4>
                         </div>
                     </div>
-                    <!-- Card 3 -->
+                    <!-- Card 2: Finvestor Annual Fest -->
                     <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
-                         onclick="openGalleryModal('NISM Workshop', 'Workshop', 'Jan 2025', 'Professional certification workshop.', 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                         onclick="openGalleryModal('Finvestor Annual Fest', 'Annual Fest', 'Feb 2025', 'Our flagship inter-collegiate festival focusing on financial literacy, workshops, and trading simulations.', 'assets/bfm_pictures/finvestor.png')">
+                        <img src="assets/bfm_pictures/finvestor.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
                         <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Workshop</span>
-                            <h4 class="text-xl font-serif font-bold text-white leading-tight">NISM Certification</h4>
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Annual Fest</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Finvestor Annual Fest</h4>
+                        </div>
+                    </div>
+                    <!-- Card 3: Actuarial Science & Data Analytics -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Actuarial Science & Data Analytics', 'Guest Lecture', 'Jan 2025', 'An insightful guest lecture and session on Actuarial Science and Data Analytics by Actuary Aman Jain.', 'assets/bfm_pictures/Acturial Science And data analytics session by Actury Aman Jain.png')">
+                        <img src="assets/bfm_pictures/Acturial Science And data analytics session by Actury Aman Jain.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Guest Lecture</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Actuarial Science Session</h4>
+                        </div>
+                    </div>
+                    <!-- Card 4: Atlas Skill Tech University Visit -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Atlas SkillTech University Visit', 'University Visit', 'Jan 2025', 'Educational visit to Atlas SkillTech University to explore modern financial technology laboratories and resources.', 'assets/bfm_pictures/Atlas skill tech unv. visit.jpg')">
+                        <img src="assets/bfm_pictures/Atlas skill tech unv. visit.jpg" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">University Visit</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Atlas SkillTech Visit</h4>
+                        </div>
+                    </div>
+                    <!-- Card 5: Investor Awareness Rally -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Investor Awareness Rally', 'Social Initiative', 'Oct 2024', 'An awareness rally organized during World Investor Week to promote financial literacy and smart investing.', 'assets/bfm_pictures/investor awareness rally.png')">
+                        <img src="assets/bfm_pictures/investor awareness rally.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Social Initiative</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Investor Awareness Rally</h4>
+                        </div>
+                    </div>
+                    <!-- Card 6: Peer-to-Peer Career Guidance -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Peer-to-Peer Career Guidance', 'Mentorship', 'Sep 2024', 'An interactive mentoring session where senior students share career guidance, preparation strategies, and resources.', 'assets/bfm_pictures/Peer to Peer Career Guidance.png')">
+                        <img src="assets/bfm_pictures/Peer to Peer Career Guidance.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Mentorship</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Peer Career Guidance</h4>
+                        </div>
+                    </div>
+                    <!-- Card 7: Stock Tech Visit at NESCO -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Stock Tech Visit at NESCO', 'Industrial Visit', 'Jan 2025', 'An industrial visit showcasing stock market technology infrastructure and digital trading innovations at NESCO.', 'assets/bfm_pictures/stock tech visit at nesco.jpg')">
+                        <img src="assets/bfm_pictures/stock tech visit at nesco.jpg" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Industrial Visit</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Stock Tech Visit</h4>
+                        </div>
+                    </div>
+                    <!-- Card 8: Freshers Party -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('BFM Freshers Party', 'Cultural', 'Aug 2024', 'Welcoming the new batch of BFM students with icebreaking activities, games, and cultural performances.', 'assets/bfm_pictures/Freshers party.png')">
+                        <img src="assets/bfm_pictures/Freshers party.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Cultural</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">BFM Freshers Party</h4>
                         </div>
                     </div>
                 </div>
+                <!-- Duplicate Set 1 -->
                 <div class="flex gap-6 shrink-0">
-                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50" onclick="openGalleryModal('Finvestor Annual Fest', 'Annual Fest', 'Feb 2025', '...', 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('BSE Industrial Visit', 'Industrial Visit', 'Dec 2024', 'A practical learning visit to the Bombay Stock Exchange (BSE) trading floor to understand real-time trading operations.', 'assets/bfm_pictures/bse visit.png')">
+                        <img src="assets/bfm_pictures/bse visit.png" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">BSE Industrial Visit</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Finvestor Annual Fest', 'Annual Fest', 'Feb 2025', 'Our flagship inter-collegiate festival focusing on financial literacy, workshops, and trading simulations.', 'assets/bfm_pictures/finvestor.png')">
+                        <img src="assets/bfm_pictures/finvestor.png" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
                         <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Finvestor Annual Fest</h4></div>
                     </div>
-                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50" onclick="openGalleryModal('BSE Industrial Visit', 'Industrial Visit', 'Dec 2024', '...', 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Actuarial Science & Data Analytics', 'Guest Lecture', 'Jan 2025', 'An insightful guest lecture and session on Actuarial Science and Data Analytics by Actuary Aman Jain.', 'assets/bfm_pictures/Acturial Science And data analytics session by Actury Aman Jain.png')">
+                        <img src="assets/bfm_pictures/Acturial Science And data analytics session by Actury Aman Jain.png" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">BSE Trading Floor</h4></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Actuarial Science Session</h4></div>
                     </div>
-                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50" onclick="openGalleryModal('NISM Workshop', 'Workshop', 'Jan 2025', '...', 'https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80')">
-                        <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Atlas SkillTech University Visit', 'University Visit', 'Jan 2025', 'Educational visit to Atlas SkillTech University to explore modern financial technology laboratories and resources.', 'assets/bfm_pictures/Atlas skill tech unv. visit.jpg')">
+                        <img src="assets/bfm_pictures/Atlas skill tech unv. visit.jpg" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">NISM Certification</h4></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Atlas SkillTech Visit</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Investor Awareness Rally', 'Social Initiative', 'Oct 2024', 'An awareness rally organized during World Investor Week to promote financial literacy and smart investing.', 'assets/bfm_pictures/investor awareness rally.png')">
+                        <img src="assets/bfm_pictures/investor awareness rally.png" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Investor Awareness Rally</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Peer-to-Peer Career Guidance', 'Mentorship', 'Sep 2024', 'An interactive mentoring session where senior students share career guidance, preparation strategies, and resources.', 'assets/bfm_pictures/Peer to Peer Career Guidance.png')">
+                        <img src="assets/bfm_pictures/Peer to Peer Career Guidance.png" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Peer Career Guidance</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Stock Tech Visit at NESCO', 'Industrial Visit', 'Jan 2025', 'An industrial visit showcasing stock market technology infrastructure and digital trading innovations at NESCO.', 'assets/bfm_pictures/stock tech visit at nesco.jpg')">
+                        <img src="assets/bfm_pictures/stock tech visit at nesco.jpg" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Stock Tech Visit</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('BFM Freshers Party', 'Cultural', 'Aug 2024', 'Welcoming the new batch of BFM students with icebreaking activities, games, and cultural performances.', 'assets/bfm_pictures/Freshers party.png')">
+                        <img src="assets/bfm_pictures/Freshers party.png" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">BFM Freshers Party</h4></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Looping Marquee Row 2 (Scroll Right) -->
+        <div class="relative overflow-hidden group/marquee py-2">
+            <div class="flex gap-6 animate-scroll-reverse hover:[animation-play-state:paused] w-max">
+                <div class="flex gap-6 shrink-0">
+                    <!-- Card 9: NSE Industrial Visit -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('NSE Industrial Visit', 'Industrial Visit', 'Dec 2024', 'An educational visit to the National Stock Exchange (NSE) to learn about electronic exchange mechanisms and clearing systems.', 'assets/bfm_pictures/nse visit.png')">
+                        <img src="assets/bfm_pictures/nse visit.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Industrial Visit</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">NSE Industrial Visit</h4>
+                        </div>
+                    </div>
+                    <!-- Card 10: Finvestor Carnival -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Finvestor Carnival', 'Carnival', 'Feb 2025', 'An annual fundraising carnival merging VCPE product sales with social causes to support the Vatsalya Foundation.', 'assets/bfm_pictures/fin car 1.png')">
+                        <img src="assets/bfm_pictures/fin car 1.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Carnival</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Finvestor Carnival</h4>
+                        </div>
+                    </div>
+                    <!-- Card 11: SP Jain Institute Session -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Session by SP Jain Institute', 'Seminar', 'Nov 2024', 'An informative session on higher education and specialized finance courses conducted by SP Jain Institute experts.', 'assets/bfm_pictures/Session by SP Jain Institiute.png')">
+                        <img src="assets/bfm_pictures/Session by SP Jain Institiute.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Seminar</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">SP Jain Institute Session</h4>
+                        </div>
+                    </div>
+                    <!-- Card 12: Kohinoor Business School Visit -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Kohinoor Business School Visit', 'Educational Visit', 'Jan 2025', 'Academic visit to Kohinoor Business School for case study workshops and business simulations.', 'assets/bfm_pictures/kohinoor business school visit.jpg')">
+                        <img src="assets/bfm_pictures/kohinoor business school visit.jpg" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Educational Visit</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Kohinoor School Visit</h4>
+                        </div>
+                    </div>
+                    <!-- Card 13: BFM Premier League -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('BFM Premier League', 'Sports', 'Jan 2025', 'The annual cricket and sports league of the BFM department promoting teamwork and healthy competition.', 'assets/bfm_pictures/BPL1.png')">
+                        <img src="assets/bfm_pictures/BPL1.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Sports</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">BFM Premier League</h4>
+                        </div>
+                    </div>
+                    <!-- Card 14: CAT & MBA Career Guidance -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('CAT & MBA Guidance', 'Seminar', 'Oct 2024', 'Career Launcher experts guiding students on CAT exam preparation strategies and MBA admission procedures.', 'assets/bfm_pictures/career launcher CAT or MBA guidence.png')">
+                        <img src="assets/bfm_pictures/career launcher CAT or MBA guidence.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Seminar</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">CAT & MBA Guidance</h4>
+                        </div>
+                    </div>
+                    <!-- Card 15: Global Education Fair -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Global Education Fair', 'Exhibition', 'Nov 2024', 'An international education fair presenting study abroad opportunities, scholarships, and admission advice.', 'assets/bfm_pictures/global education fair.jpg')">
+                        <img src="assets/bfm_pictures/global education fair.jpg" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Exhibition</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Global Education Fair</h4>
+                        </div>
+                    </div>
+                    <!-- Card 16: Alumni Testimonial Session -->
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Alumni Testimonial Session', 'Alumni Event', 'Feb 2025', 'Prominent alumni of the BFM department interacting with students and sharing industry insights.', 'assets/bfm_pictures/Alumini testimonial.jpg')">
+                        <img src="assets/bfm_pictures/Alumini testimonial.jpg" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <span class="px-3 py-1 bg-gold-500 text-dark-900 text-[9px] font-bold uppercase tracking-wider rounded-full mb-3 inline-block">Alumni Event</span>
+                            <h4 class="text-lg sm:text-xl font-serif font-bold text-white leading-tight">Alumni Testimonial</h4>
+                        </div>
+                    </div>
+                </div>
+                <!-- Duplicate Set 2 -->
+                <div class="flex gap-6 shrink-0">
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('NSE Industrial Visit', 'Industrial Visit', 'Dec 2024', 'An educational visit to the National Stock Exchange (NSE) to learn about electronic exchange mechanisms and clearing systems.', 'assets/bfm_pictures/nse visit.png')">
+                        <img src="assets/bfm_pictures/nse visit.png" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">NSE Industrial Visit</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Finvestor Carnival', 'Carnival', 'Feb 2025', 'An annual fundraising carnival merging VCPE product sales with social causes to support the Vatsalya Foundation.', 'assets/bfm_pictures/fin car 1.png')">
+                        <img src="assets/bfm_pictures/fin car 1.png" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Finvestor Carnival</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Session by SP Jain Institute', 'Seminar', 'Nov 2024', 'An informative session on higher education and specialized finance courses conducted by SP Jain Institute experts.', 'assets/bfm_pictures/Session by SP Jain Institiute.png')">
+                        <img src="assets/bfm_pictures/Session by SP Jain Institiute.png" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">SP Jain Institute Session</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Kohinoor Business School Visit', 'Educational Visit', 'Jan 2025', 'Academic visit to Kohinoor Business School for case study workshops and business simulations.', 'assets/bfm_pictures/kohinoor business school visit.jpg')">
+                        <img src="assets/bfm_pictures/kohinoor business school visit.jpg" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Kohinoor School Visit</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('BFM Premier League', 'Sports', 'Jan 2025', 'The annual cricket and sports league of the BFM department promoting teamwork and healthy competition.', 'assets/bfm_pictures/BPL1.png')">
+                        <img src="assets/bfm_pictures/BPL1.png" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">BFM Premier League</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('CAT & MBA Guidance', 'Seminar', 'Oct 2024', 'Career Launcher experts guiding students on CAT exam preparation strategies and MBA admission procedures.', 'assets/bfm_pictures/career launcher CAT or MBA guidence.png')">
+                        <img src="assets/bfm_pictures/career launcher CAT or MBA guidence.png" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">CAT & MBA Guidance</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Global Education Fair', 'Exhibition', 'Nov 2024', 'An international education fair presenting study abroad opportunities, scholarships, and admission advice.', 'assets/bfm_pictures/global education fair.jpg')">
+                        <img src="assets/bfm_pictures/global education fair.jpg" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Global Education Fair</h4></div>
+                    </div>
+                    <div class="group relative w-[280px] aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 cursor-pointer shadow-2xl transition-all duration-500 hover:border-gold-500/50"
+                         onclick="openGalleryModal('Alumni Testimonial Session', 'Alumni Event', 'Feb 2025', 'Prominent alumni of the BFM department interacting with students and sharing industry insights.', 'assets/bfm_pictures/Alumini testimonial.jpg')">
+                        <img src="assets/bfm_pictures/Alumini testimonial.jpg" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 w-full"><h4 class="text-xl font-serif font-bold text-white">Alumni Testimonial</h4></div>
                     </div>
                 </div>
             </div>
@@ -775,7 +1002,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Nischay Goenka</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Nischay Goenka</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Dalmia Stock Exchange'25</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Fall of Fame (Arthanomics)</span></li>
@@ -793,7 +1020,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Aditya Shinde</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Aditya Shinde</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Dalmia Stock Exchange'25</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="medal" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Position</strong> - Bull's Eye Quiz</span></li>
@@ -811,7 +1038,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Roxane Choksi</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Roxane Choksi</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="star" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">Winner</strong> - NSE Quiz Series 5</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Agree to Disagree</span></li>
@@ -829,7 +1056,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Vidhi Hasmukh Jain</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Vidhi Hasmukh Jain</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Indian Folk Dance</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="award" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Prize</strong> - Dealicious</span></li>
@@ -847,7 +1074,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Anurag Pandey</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Anurag Pandey</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Story Writing</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="medal" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">2nd Rank</strong> - Research Presentation</span></li>
@@ -865,7 +1092,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Bhoomi Sachdeva</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Bhoomi Sachdeva</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Athena Runway</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="star" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">Winner</strong> - Reel Making</span></li>
@@ -886,7 +1113,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Nischay Goenka</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Nischay Goenka</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Dalmia Stock Exchange'25</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Fall of Fame (Arthanomics)</span></li>
@@ -904,7 +1131,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Aditya Shinde</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Aditya Shinde</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Dalmia Stock Exchange'25</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="medal" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Position</strong> - Bull's Eye Quiz</span></li>
@@ -922,7 +1149,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Roxane Choksi</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Roxane Choksi</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="star" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">Winner</strong> - NSE Quiz Series 5</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Agree to Disagree</span></li>
@@ -940,7 +1167,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Vidhi Hasmukh Jain</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Vidhi Hasmukh Jain</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Indian Folk Dance</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="award" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Prize</strong> - Dealicious</span></li>
@@ -958,7 +1185,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Anurag Pandey</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Anurag Pandey</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Story Writing</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="medal" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">2nd Rank</strong> - Research Presentation</span></li>
@@ -976,7 +1203,7 @@
                                 </div>
                             </div>
                             <div class="p-6">
-                                <h4 class="text-xl font-serif font-bold text-white mb-4">Bhoomi Sachdeva</h4>
+                                <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4">Bhoomi Sachdeva</h4>
                                 <ul class="text-xs text-gray-400 space-y-3">
                                     <li class="flex items-start gap-3"><i data-lucide="trophy" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">1st Rank</strong> - Athena Runway</span></li>
                                     <li class="flex items-start gap-3"><i data-lucide="star" class="w-4 h-4 text-gold-500 flex-shrink-0 mt-0.5"></i> <span><strong class="text-gold-400">Winner</strong> - Reel Making</span></li>
@@ -1006,7 +1233,7 @@
                 <!-- FAQ Item 1: Eligibility -->
                 <div class="faq-item group border border-white/5 bg-[#0a0a0a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-gold-500/30">
                     <button class="w-full px-8 py-6 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
-                        <span class="text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">Eligibility & Admission Criteria</span>
+                        <span class="text-base sm:text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">Eligibility & Admission Criteria</span>
                         <div class="faq-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold-500 group-hover:border-gold-500/50 transition-all">
                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-500"></i>
                         </div>
@@ -1032,7 +1259,7 @@
                 <!-- FAQ Item 2: Programme Outcome -->
                 <div class="faq-item group border border-white/5 bg-[#0a0a0a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-gold-500/30">
                     <button class="w-full px-8 py-6 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
-                        <span class="text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">What are the Programme Outcomes?</span>
+                        <span class="text-base sm:text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">What are the Programme Outcomes?</span>
                         <div class="faq-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold-500 group-hover:border-gold-500/50 transition-all">
                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-500"></i>
                         </div>
@@ -1053,7 +1280,7 @@
                 <!-- FAQ Item 3: Scheme of Examination -->
                 <div class="faq-item group border border-white/5 bg-[#0a0a0a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-gold-500/30">
                     <button class="w-full px-8 py-6 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
-                        <span class="text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">Scheme of Examination</span>
+                        <span class="text-base sm:text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">Scheme of Examination</span>
                         <div class="faq-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold-500 group-hover:border-gold-500/50 transition-all">
                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-500"></i>
                         </div>
@@ -1080,7 +1307,7 @@
                 <!-- FAQ Item 4: Placements & Highlights -->
                 <div class="faq-item group border border-white/5 bg-[#0a0a0a] rounded-2xl overflow-hidden transition-all duration-300 hover:border-gold-500/30">
                     <button class="w-full px-8 py-6 text-left flex justify-between items-center gap-4" onclick="toggleFaq(this)">
-                        <span class="text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">Career Prospects & Industry Exposure</span>
+                        <span class="text-base sm:text-lg font-serif font-bold text-white group-hover:text-gold-500 transition-colors">Career Prospects & Industry Exposure</span>
                         <div class="faq-icon w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold-500 group-hover:border-gold-500/50 transition-all">
                             <i data-lucide="chevron-down" class="w-5 h-5 transition-transform duration-500"></i>
                         </div>
@@ -1130,7 +1357,7 @@
                     <div class="absolute -right-10 -top-10 w-40 h-40 bg-gold-500/10 rounded-full blur-2xl"></div>
                     
                     <div class="relative z-10">
-                        <h4 class="text-xl font-serif font-bold text-white mb-4 flex items-center gap-3">
+                        <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-4 flex items-center gap-3">
                             <div class="bg-gold-500/10 p-2 rounded-lg">
                                 <i data-lucide="map-pin" class="text-gold-500 w-5 h-5"></i>
                             </div>
@@ -1146,7 +1373,7 @@
                     <div class="w-full h-px bg-white/10"></div>
 
                     <div class="relative z-10">
-                        <h4 class="text-xl font-serif font-bold text-white mb-6 flex items-center gap-3">
+                        <h4 class="text-lg sm:text-xl font-serif font-bold text-white mb-6 flex items-center gap-3">
                             <div class="bg-gold-500/10 p-2 rounded-lg">
                                 <i data-lucide="train" class="text-gold-500 w-5 h-5"></i>
                             </div>
@@ -1158,7 +1385,7 @@
                                     <span class="block w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.6)]"></span>
                                 </div>
                                 <div>
-                                    <p class="text-white font-semibold text-lg">Prabhadevi</p>
+                                    <p class="text-white font-semibold text-base sm:text-lg">Prabhadevi</p>
                                     <p class="text-xs text-gold-500 font-bold uppercase tracking-wider mt-1">Western Railway</p>
                                 </div>
                             </li>
@@ -1167,7 +1394,7 @@
                                     <span class="block w-2.5 h-2.5 rounded-full bg-red-400 shadow-[0_0_8px_rgba(248,113,113,0.6)]"></span>
                                 </div>
                                 <div>
-                                    <p class="text-white font-semibold text-lg">Parel</p>
+                                    <p class="text-white font-semibold text-base sm:text-lg">Parel</p>
                                     <p class="text-xs text-gold-500 font-bold uppercase tracking-wider mt-1">Central Railway</p>
                                 </div>
                             </li>
@@ -1205,7 +1432,7 @@
                             <img src="https://www.hindujacollege.edu.in/assets/newimages/logo/logo.webp" alt="logo" class="w-full h-full object-contain">
                         </div>
                         <div>
-                            <h2 class="text-white font-serif font-bold text-xl">K.P.B. Hinduja College</h2>
+                            <h2 class="text-white font-serif font-bold text-lg sm:text-xl">K.P.B. Hinduja College</h2>
                             <p class="text-gold-500 text-xs font-semibold tracking-widest uppercase mt-0.5">BFM Department</p>
                         </div>
                     </div>
